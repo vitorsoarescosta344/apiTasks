@@ -5,15 +5,25 @@ const consign = require('consign')
 const PORT = process.env.PORT || 5000
 
 
-consign()
-    .include('./config/passport')
-    .then('./config/middlewares')
-    .then('./api')
-    .then('./config/routes')
-    .into(app)
+class App {
+    constructor() {
+        this.express = express();
+        this.consign = consign()
+        .include('./config/passport')
+        .then('./config/middlewares')
+        .then('./api')
+        .then('./config/routes')
+        .into(app)
 
-app.db = db
+        app.db = db
 
-app.listen(PORT, () => {
-    console.log('Backend executando...')
-})
+        this.express.listen(PORT, () =>
+            console.log(`Sua API REST está funcionando na porta ${PORT} `)
+        );
+    }
+
+
+    consign()
+
+}
+module.exports = new App().express;
