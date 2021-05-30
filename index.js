@@ -6,10 +6,10 @@ const PORT = process.env.PORT || 5000
 
 
 consign()
-    .include('./config/passport.js')
-    .then('./config/middlewares.js')
+    .include('./config/passport')
+    .then('./config/middlewares')
     .then('./api')
-    .then('./config/routes.js')
+    .then('./config/routes')
     .into(app)
 
 app.db = db
