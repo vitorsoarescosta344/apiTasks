@@ -23,7 +23,9 @@ class App {
     }
 
 
-    consign()
+    consign(){
+        
+    }
 
 }
-module.exports = new App().express;
+module.exports = new App().app;
